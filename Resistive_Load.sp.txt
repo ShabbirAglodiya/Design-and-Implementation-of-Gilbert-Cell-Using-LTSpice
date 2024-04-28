@@ -1,0 +1,30 @@
+* C:\Users\success\Desktop\ACIC\Project\Special_Assignment_21BEC006\gilbert_cell.asc
+
+M1 N003 N006 N004 N004 NMOS l=0.18u w=6u 
+M2 N002 N007 N004 N004 NMOS l=0.18u w=6u 
+M3 N004 N009 N008 N008 NMOS l=0.18u w=6u 
+M4 N003 N007 N005 N005 NMOS l=0.18u w=6u 
+M5 N005 N010 N008 N008 NMOS l=0.18u w=6u 
+M6 N002 N006 N005 N005 NMOS l=0.18u w=6u
+
+R1 N001 N003 300 tol=1 pwr=0.1 
+R2 N001 N002 300
+
+V1 N001 0 1.8
+V2 N006 N007 PULSE(0 1.8 0 10p 10p 0.03n 0.1n)
+
+I1 N008 0 100m
+V3 N010 N009 SINE(0 1 1.1g) AC 1
+
+.model NMOS NMOS
+.model PMOS PMOS
+
+.lib D:\LTSpice\lib\lib\cmp\standard.mos
+.tran 0 10n 0 10p
+
+.lib mosfet_018.lib
+.options plotwinsize = 0
+;ac dec 100 1 10g
+
+.backanno
+.end
